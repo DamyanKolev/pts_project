@@ -1,0 +1,128 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ---------------------------------------------LAYOUT--------------------------------------------- */
+.main-container {
+  height: 100vh;
+  width: 100%;
+  background-color: #f7f7f7;
+}
+
+.content-container {
+  background-color: #f7f7f7;
+  display: flex;
+  height: calc(100% - 2.75rem);
+  width: 100%;
+}
+
+.side-navigation {
+  height: 100%;
+}
+
+.page-content{
+  width: 100%;
+}
+
+.page-bar{
+  margin: 0 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: solid 0.08rem #e5e5e5;
+}
+
+
+/* ---------------------------------------------LAYOUT--------------------------------------------- */
+
+
+
+/* ---------------------------------------------PAGES--------------------------------------------- */
+.page-container{
+  display: flex;
+  flex-direction: column;
+  padding-top: 1rem;
+}
+/* ---------------------------------------------PAGES--------------------------------------------- */
+
+
+
+/* ---------------------------------------------HOME PAGE--------------------------------------------- */
+.add-btn-container{
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content:space-between;
+  align-items: center;
+  margin: 0 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: solid 0.08rem #e5e5e5;
+}
+
+
+/* ---------------------------------------------HOME PAGE--------------------------------------------- */
+
+
+
+/* ---------------------------------------------OPTIONS PAGE--------------------------------------------- */
+.title-container{
+  margin: 0 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: solid 0.08rem #e5e5e5;
+}
+/* ---------------------------------------------OPTIONS PAGE--------------------------------------------- */
+
+
+
+/* ---------------------------------------------OPTION PAGE--------------------------------------------- */
+.option-content{
+  margin: 1rem 1rem 0 1rem;
+}
+
+.page-input{
+  min-width: 10rem;
+  max-width: 10rem;
+  min-height: 1.7rem;
+  max-height: 1.7rem;
+}
+
+.page-data-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: flex-end;
+}
+/* ---------------------------------------------OPTION PAGE--------------------------------------------- */
