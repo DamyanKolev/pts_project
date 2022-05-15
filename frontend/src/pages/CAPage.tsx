@@ -1,7 +1,4 @@
-import {
-  ResponsiveGridLayout,
-  Title,
-} from "@ui5/webcomponents-react";
+import { ResponsiveGridLayout, Title } from "@ui5/webcomponents-react";
 import { LineChart } from "@ui5/webcomponents-react-charts";
 import React from "react";
 
@@ -12,25 +9,26 @@ interface CAData {
 
 export default function CAPage() {
   const [data, setData] = React.useState<CAData>();
+  const [loading, setLoading] = React.useState<boolean>(true);
+
+  const showLoading = () => setLoading(true);
+
+  const hideLoading = () => setLoading(false);
 
   React.useEffect(() => {
     const fetchData = async () => {
-      await fetch("http://localhost:8080/api/options/CA", {
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-        },
-      })
+      showLoading();
+      await fetch("http://localhost:8080/api/options/CA", {})
         .then((res) => {
           return res.json();
         })
         .then((json) => {
           setData(json as any as CAData);
         });
+      hideLoading();
     };
     fetchData().catch(console.error);
-  }, []);
+  }, [loading]);
 
   return (
     <div className="page-container">
@@ -45,8 +43,8 @@ export default function CAPage() {
             className="responsiveGridLayoutItem"
           >
             <LineChart
-              dimensions={[{ accessor: "assessment" }]} //wiki
-              measures={[{ accessor: "wikiUpdates", label: "Wiki updates" }]} //ocenka
+              dimensions={[{ accessor: "assessment" }]} //"wikiUpdates"
+              measures={[{ accessor: "wikiUpdates", label: "Оценка" }]} //"assessment"
               dataset={data?.dataset}
             />
           </div>

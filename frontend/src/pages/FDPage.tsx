@@ -16,18 +16,29 @@ interface FDData {
 
 export default function FDPage() {
   const [data, setData] = React.useState<FDData[]>([]);
+  const [loading, setLoading] = React.useState<boolean>(true)
+
+  const showLoading = () => (
+      setLoading(true)
+  )
+
+  const hideLoading = () => (
+      setLoading(false)
+  )
 
   React.useEffect(() => {
     const fetchData = async () => {
+      showLoading()
       await fetch("http://localhost:8080/api/options/FD", {
       })
         .then((res) => res.json())
         .then((json) => {
           setData(json as any as Array<FDData>);
         });
+        hideLoading()
     };
     fetchData().catch(console.error);
-  },[]);
+  },[loading]);
 
   return (
     <div className="page-container">

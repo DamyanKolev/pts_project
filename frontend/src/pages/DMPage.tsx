@@ -23,9 +23,19 @@ interface DMData {
 
 export default function DMPage() {
   const [data, setData] = React.useState<DMData>();
+  const [loading, setLoading] = React.useState<boolean>(true)
+
+  const showLoading = () => (
+      setLoading(true)
+  )
+
+  const hideLoading = () => (
+      setLoading(false)
+  )
 
   React.useEffect(() => {
     const fetchData = async () => {
+      showLoading()
       await fetch("http://localhost:8080/api/options/DM", {
 
       })
@@ -34,9 +44,10 @@ export default function DMPage() {
       console.log(json)
           setData(json as any as DMData);
         });
+        hideLoading()
     };
     fetchData().catch(console.error);
-  },[]);
+  },[loading]);
 
   return (
     <div className="page-container">

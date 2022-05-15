@@ -23,17 +23,28 @@ interface MCTData {
 
 export default function MCTPage() {
   const [data, setData] = React.useState<MCTData>();
+  const [loading, setLoading] = React.useState<boolean>(true)
+
+    const showLoading = () => (
+        setLoading(true)
+    )
+
+    const hideLoading = () => (
+        setLoading(false)
+    )
 
   React.useEffect(() => {
     const fetchData = async () => {
+      showLoading()
       await fetch("http://localhost:8080/api/options/MCT", {})
         .then((res) => res.json())
         .then((json) => {
           setData(json as any as MCTData);
         });
+        hideLoading()
     };
     fetchData().catch(console.error);
-  }, []);
+  }, [loading]);
 
   return (
     <div className="page-container">
@@ -47,7 +58,7 @@ export default function MCTPage() {
             style={{ gridColumn: "span 7", height: "35rem", overflow: "auto" }}
             className="responsiveGridLayoutItem"
           >
-            <Table
+            <Table stickyColumnHeader
               columns={
                 <>
                   <TableColumn popinText="ID" style={{ width: "15rem" }}>
