@@ -1,6 +1,6 @@
 @echo off
 cd %~dp0\frontend
-start npm start
+npm install && start npm install
 
 cd %~dp0\backend
-mvn spring-boot:run
+start mvn spring-boot:run
